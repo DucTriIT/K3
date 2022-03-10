@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<DATA>
+  <!--  Database info -->
+  <SERVER>192.168.1.9</SERVER>
+  <NAME>KIMHUONG2405</NAME>
+  <USERID>sa</USERID>
+  <PASSWORD>w0O5tQ2nhLs=</PASSWORD>
+  <PRINTER>Microsoft XPS Document Writer</PRINTER>
+  <PRINTERBILL>Send To OneNote 2007</PRINTERBILL>
+  <!-- Connect to Scale COM Port info -->
+  <Scale-Config>
+    <PortName>COM5</PortName>
+    <BitPerSecond>1200</BitPerSecond>
+    <DataBit>8</DataBit>
+    <Parity>None</Parity>
+    <StopBit>1</StopBit>
+    <FlowControl>HardWare</FlowControl>
+    <ReadTimeout>1000</ReadTimeout>
+  </Scale-Config>
+  <!-- Parse date from scale (vang Ly) -->
+  <L-ParseData-Config>
+    <L-Position>1</L-Position>
+    <L-Length>7</L-Length>
+  </L-ParseData-Config>
+  <!-- Parse date from scale (vang Gram) -->
+  <G-ParseData-Config>
+    <G-Position>1</G-Position>
+    <G-Length>7</G-Length>
+  </G-ParseData-Config>
+</DATA>

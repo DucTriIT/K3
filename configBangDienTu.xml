@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<DATA>
+  <Scale-Config>
+	<Gold>DE SJC@SJC@D 18k@18K</Gold>
+    <PortName>COM1</PortName>
+    <BitPerSecond>19200</BitPerSecond>
+    <DataBit>8</DataBit>
+    <Parity>None</Parity>
+    <StopBit>1</StopBit>
+    <FlowControl>HardWare</FlowControl>
+    <ReadTimeout>1000</ReadTimeout>
+  </Scale-Config>
+</DATA>
