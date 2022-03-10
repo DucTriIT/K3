@@ -1768,9 +1768,9 @@
             this.tileControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tileControl1.DragSize = new System.Drawing.Size(0, 0);
             this.tileControl1.IndentBetweenItems = 2;
+            this.tileControl1.ItemSize = 80;
             this.tileControl1.Location = new System.Drawing.Point(3, 22);
             this.tileControl1.Name = "tileControl1";
-            this.tileControl1.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.tileControl1.Size = new System.Drawing.Size(369, 567);
             this.tileControl1.TabIndex = 0;
             this.tileControl1.Text = "tileControl1";
