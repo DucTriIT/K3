@@ -95,10 +95,7 @@ namespace SuperX
                     item.AppearanceItem.Selected.Font = item.AppearanceItem.Normal.Font;
                     item.Tag = dr["MAHD"] + "";
                     item.TextAlignment = TileItemContentAlignment.TopCenter;
-                    item.AppearanceItem.Normal.BackColor= !string.IsNullOrEmpty(dr["MAHD"] + "") ?Color.Red:Color.DarkGreen;
-                    item.AppearanceItem.Hovered.BackColor= item.AppearanceItem.Normal.BackColor;
-                    item.AppearanceItem.Selected.BackColor= item.AppearanceItem.Normal.BackColor;
-                    //item.Image = !string.IsNullOrEmpty(dr["MAHD"] + "") ? Resources._1454839877_Open_Sign : Resources._1454839955_closed_shop_black_friday_sale_store;
+                    item.Image = !string.IsNullOrEmpty(dr["MAHD"] + "") ? Resources._1454839877_Open_Sign : Resources._1454839955_closed_shop_black_friday_sale_store;
                     item.ImageAlignment = TileItemContentAlignment.MiddleCenter;
                     item.ItemClick += new TileItemClickEventHandler(item_ItemClick);
                     string strtienphong = dr["TienGio"].ToString() == "" ? "0" : dr["TienGio"].ToString();
