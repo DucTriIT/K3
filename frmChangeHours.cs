@@ -11,6 +11,8 @@ namespace SuperX
 {
     public partial class frmChangeHours : Form
     {
+        private static readonly log4net.ILog log =
+           log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private DateTime giovao;
         public string dteStart;
         public frmChangeHours()
@@ -28,6 +30,7 @@ namespace SuperX
         {
             if (timeIn.Time.CompareTo(giovao) > 0)
             {
+                log.Error($"Start Time {this.giovao.ToString("MM/dd/yyyy HH:mm")} Edit Time {timeIn.Time.ToString("MM/dd/yyyy HH:mm")}");
                 return;
             }
             this.dteStart = timeIn.Time.ToString("hh:mm tt");
