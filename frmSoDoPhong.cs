@@ -666,12 +666,14 @@ namespace SuperX
             decimal dSL = 0;
             decimal dGiaBan = 0;
             decimal dThanhTien = 0;
-            TimeSpan start23 = new TimeSpan(23, 0, 0);
-            TimeSpan end23 = new TimeSpan(23, 59, 59);
+            TimeSpan start17 = new TimeSpan(17, 0, 0);
+            TimeSpan end17 = new TimeSpan(21, 59, 59);
+            TimeSpan start22 = new TimeSpan(22, 0, 0);
+            TimeSpan end22 = new TimeSpan(9, 59, 59);
+            TimeSpan start10 = new TimeSpan(10, 0, 0);
+            TimeSpan end10 = new TimeSpan(16, 59, 59);
             TimeSpan start12 = new TimeSpan(0, 0, 0);
             TimeSpan end12 = new TimeSpan(9, 59, 59);
-            TimeSpan start10 = new TimeSpan(10, 0, 0);
-            TimeSpan end10 = new TimeSpan(22, 59, 59);
             //TimeSpan duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse(dteStart.Text));
             //if (duration.TotalHours < 0)
             //{
@@ -700,10 +702,10 @@ namespace SuperX
                 else dGiaBan = btnVIP.Text == "N" ? (decimal)tienphong : (decimal)tienphong;
             }
             //Tính thêm khi hát luc 11h,12h
-            //Neu vao tu 10h den 23h
+            //Neu vao tu 10h den 17h
             if (Functions.TimeBetween(DateTime.Parse(dteStart.Text), start10, end10))
             {
-                //Nếu ra từ 10h  đến 23
+                //Nếu ra từ 10h den 17h
                 if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start10, end10))
                 {
                     TimeSpan duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse(dteStart.Text));
@@ -715,11 +717,11 @@ namespace SuperX
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
                     dThanhTien = Functions.fn_VNDRounding(dSL * (dGiaBan));
                 }
-                //Nếu ra từ 23h toi đến 12h sang
-                else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start23, end23))
+                //Nếu ra từ 17h toi đến 22h
+                else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start17, end17))
                 {
-                    //tinh den 23h toi
-                    TimeSpan duration = DateTime.Parse("11:00 PM").Subtract(DateTime.Parse(dteStart.Text));
+                    //tinh den 17h toi
+                    TimeSpan duration = DateTime.Parse("5:00 PM").Subtract(DateTime.Parse(dteStart.Text));
                     if (duration.TotalHours < 0)
                     {
                         dSL = 0;
@@ -729,13 +731,13 @@ namespace SuperX
                     dThanhTien = Functions.fn_VNDRounding(dSL * (dGiaBan));
 
                     //Den gio ve
-                    if (dteEnd.Text.Contains("12:00"))
+                    if (dteEnd.Text.Contains("10:00"))
                     {
                         dSL = 1;
                     }
                     else
                     {
-                        duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("11:00 PM"));
+                        duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("5:00 PM"));
                         if (duration.TotalHours < 0)
                         {
                             dSL = 0;
@@ -745,11 +747,11 @@ namespace SuperX
                     }
                     dThanhTien += Functions.fn_VNDRounding(dSL * (dGiaBan + clsSystem.TiemThem11h));
                 }
-                //Nếu ra sau 12h
-                else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start12, end12))
+                //Nếu ra sau 22h
+                else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start22, end22))
                 {
-                    //tinh den 23h toi
-                    TimeSpan duration = DateTime.Parse("11:00 PM").Subtract(DateTime.Parse(dteStart.Text));
+                    //tinh den 17h toi
+                    TimeSpan duration = DateTime.Parse("5:00 PM").Subtract(DateTime.Parse(dteStart.Text));
                     if (duration.TotalHours < 0)
                     {
                         dSL = 0;
@@ -758,24 +760,24 @@ namespace SuperX
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
                     dThanhTien = Functions.fn_VNDRounding(dSL * (dGiaBan));
 
-                    //Den 12 sang                    
-                    dThanhTien += Functions.fn_VNDRounding(1 * (dGiaBan + clsSystem.TiemThem11h));
-                    //Tu 12 h sang den ve
-                    duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("12:00 AM"));
+                    //Den 22h toi                    
+                    dThanhTien += Functions.fn_VNDRounding(5 * (dGiaBan + clsSystem.TiemThem11h));
+                    //Tu 22h h toi den ve
+                    duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("10:00 PM"));
                     if (duration.TotalHours < 0)
                     {
-                        dSL = 0;
+                        dSL = Math.Round(Convert.ToDecimal(24 + duration.TotalHours), 2);
                     }
                     else
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
                     dThanhTien += Functions.fn_VNDRounding(dSL * (dGiaBan + clsSystem.TiemThem12h));
                 }
             }
-            //Nếu vào hát từ 11h đến 12h
-            else if (Functions.TimeBetween(DateTime.Parse(dteStart.Text), start23, end23))
+            //Nếu vào hát từ 17h đến 22h
+            else if (Functions.TimeBetween(DateTime.Parse(dteStart.Text), start17, end17))
             {
-                //Nếu ra từ 11h đến 12h
-                if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start23, end23))
+                //Nếu ra từ 17h đến 22h
+                if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start17, end17))
                 {
                     TimeSpan duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse(dteStart.Text));
                     if (duration.TotalHours < 0)
@@ -786,11 +788,11 @@ namespace SuperX
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
                     dThanhTien = Functions.fn_VNDRounding(dSL * (dGiaBan + clsSystem.TiemThem11h));
                 }
-                //Nếu ra từ 12h sang1 đến 10h sang
-                else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start12, end12))
+                //Nếu ra từ 22h toi đến 10h sang
+                else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start22, end22))
                 {
-                    //Den 12h sang
-                    TimeSpan duration = DateTime.Parse("12:00 AM").Subtract(DateTime.Parse(dteStart.Text));
+                    //Den 22h toi
+                    TimeSpan duration = DateTime.Parse("10:00 PM").Subtract(DateTime.Parse(dteStart.Text));
                     if (duration.TotalHours < 0)
                     {
                         dSL = Math.Round(Convert.ToDecimal(24 + duration.TotalHours), 2);
@@ -800,7 +802,7 @@ namespace SuperX
                     dThanhTien = Functions.fn_VNDRounding(dSL * (dGiaBan + clsSystem.TiemThem11h));
 
                     //Tính tiền đến gio ve
-                    duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("12:00 AM"));
+                    duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("10:00 PM"));
                     if (duration.TotalHours < 0)
                     {
                         dSL = 0;
@@ -810,11 +812,11 @@ namespace SuperX
                     dThanhTien += Functions.fn_VNDRounding(dSL * (dGiaBan + clsSystem.TiemThem12h));
 
                 }
-                //Nếu ra từ 10h sang đến 23h 
+                //Nếu ra từ 10h sang đến 17h chieu 
                 else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start10, end10))
                 {
-                    //Den 12h sang
-                    TimeSpan duration = DateTime.Parse("12:00 AM").Subtract(DateTime.Parse(dteStart.Text));
+                    //Den 10h toi
+                    TimeSpan duration = DateTime.Parse("10:00 PM").Subtract(DateTime.Parse(dteStart.Text));
                     if (duration.TotalHours < 0)
                     {
                         dSL = Math.Round(Convert.ToDecimal(24 + duration.TotalHours), 2);
@@ -824,7 +826,7 @@ namespace SuperX
                     dThanhTien = Functions.fn_VNDRounding(dSL * (dGiaBan + clsSystem.TiemThem11h));
 
                     //Tính tiền đến 10h sang                    
-                    dThanhTien += Functions.fn_VNDRounding(10 * (dGiaBan + clsSystem.TiemThem12h));
+                    dThanhTien += Functions.fn_VNDRounding(12 * (dGiaBan + clsSystem.TiemThem12h));
 
                     //Tính tiền từ 10h đến ve
                     duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("10:00 AM"));
@@ -837,11 +839,11 @@ namespace SuperX
                     dThanhTien += Functions.fn_VNDRounding(dSL * (dGiaBan));
                 }
             }
-            //Vào hát từ 12h sáng
-            else if (Functions.TimeBetween(DateTime.Parse(dteStart.Text), start12, end12))
+            //Vào hát từ 22h tối
+            else if (Functions.TimeBetween(DateTime.Parse(dteStart.Text), start22, end22))
             {
                 //Nếu ra trc 10h sáng
-                if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start12, end12))
+                if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start22, end22))
                 {
                     TimeSpan duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse(dteStart.Text));
                     if (duration.TotalHours < 0)
@@ -852,14 +854,14 @@ namespace SuperX
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
                     dThanhTien = Functions.fn_VNDRounding(dSL * (dGiaBan + clsSystem.TiemThem12h));
                 }
-                //Nếu ra từ 10h sang đến 23h đêm
+                //Nếu ra từ 10h sang đến 17h chiều
                 else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start10, end10))
                 {
                     //Tính tiền từ giờ vào đến 10h sáng
                     TimeSpan duration = DateTime.Parse("10:00 AM").Subtract(DateTime.Parse(dteStart.Text));
                     if (duration.TotalHours < 0)
                     {
-                        dSL = 0;
+                       dSL = Math.Round(Convert.ToDecimal(24 + duration.TotalHours), 2);
                     }
                     else
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
@@ -874,8 +876,8 @@ namespace SuperX
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
                     dThanhTien += Functions.fn_VNDRounding(dSL * (dGiaBan));
                 }
-                //Nếu ra từ 23h đến 24h 
-                else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start23, end23))
+                //Nếu ra từ 17h đến 22h 
+                else if (Functions.TimeBetween(DateTime.Parse(dteEnd.Text), start17, end17))
                 {
                     //Tính tiền từ giờ vào đến 10h sáng
                     TimeSpan duration = DateTime.Parse("10:00 AM").Subtract(DateTime.Parse(dteStart.Text));
@@ -886,16 +888,16 @@ namespace SuperX
                     else
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
                     dThanhTien = Functions.fn_VNDRounding(dSL * (dGiaBan + clsSystem.TiemThem12h));
-                    //Từ 10h sáng đến 11h tối                  
-                    dThanhTien += Functions.fn_VNDRounding(13 * (dGiaBan));
-                    //Tu 11h den ket thuc     
-                    if (dteEnd.Text.Contains("12:00"))
+                    //Từ 10h sáng đến 17h chiều                  
+                    dThanhTien += Functions.fn_VNDRounding(7 * (dGiaBan));
+                    //Tu 17h den ket thuc     
+                    if (dteEnd.Text.Contains("10:00"))
                     {
                         dSL = 1;
                     }
                     else
                     {
-                        duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("11:00 PM"));
+                        duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("05:00 PM"));
                         if (duration.TotalHours < 0)
                         {
                             dSL = 0;
