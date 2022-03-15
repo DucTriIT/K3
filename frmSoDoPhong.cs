@@ -805,7 +805,7 @@ namespace SuperX
                     duration = DateTime.Parse(dteEnd.Text).Subtract(DateTime.Parse("10:00 PM"));
                     if (duration.TotalHours < 0)
                     {
-                        dSL = 0;
+                        dSL = Math.Round(Convert.ToDecimal(24 + duration.TotalHours), 2);
                     }
                     else
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
