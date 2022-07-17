@@ -15,6 +15,8 @@ namespace SuperX
 {
     public partial class frmChangeRoom : Form
     {
+        private static readonly log4net.ILog log =
+          log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private string room;
         public string changeroom;
         public string changemagd;
@@ -38,6 +40,7 @@ namespace SuperX
         }
         private void InitSoDoPhong()
         {
+            log.Debug($"InitSoDoPhong {room}");
             DataSet ds = new DataSet();
             tileControl1.Groups.Clear();
             ds = clsCommon.ExecuteDatasetSP("T_Phong_Lst",room);

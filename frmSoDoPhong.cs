@@ -965,6 +965,7 @@ namespace SuperX
                     ThongBao.Show("Thông báo", "Chưa tính tiền giờ cho phòng này!", "OK", ICon.Information);
                     return;
                 }
+                log.Debug($"Chuyển từ phòng:{room}");
                 frmChangeRoom frm = new frmChangeRoom(room);
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
