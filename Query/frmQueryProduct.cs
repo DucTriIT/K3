@@ -202,7 +202,7 @@ namespace GoldRT
                 for (int i = 0; i < grvProduct.RowCount; i++)
                 {
 
-                    if (grvProduct.GetRowCellValue(i, "ProductCode").ToString().ToUpper() == txtProductCode.Text.Trim().ToUpper())
+                    if (grvProduct.GetRowCellValue(i, "GoldDesc").ToString().ToUpper() == txtProductCode.Text.Trim().ToUpper())
                     {
                         grvProduct.SelectRow(i);
                         grvProduct.FocusedRowHandle = i;

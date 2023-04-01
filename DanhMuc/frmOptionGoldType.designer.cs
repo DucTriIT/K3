@@ -1015,7 +1015,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraEditors.TextEdit txtGoldDesc;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraEditors.ComboBoxEdit cboGoldType;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.ComboBoxEdit cboUnit;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
@@ -1049,5 +1048,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
         private DevExpress.XtraEditors.SimpleButton btnCapNhat;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+        private DevExpress.XtraEditors.ComboBoxEdit cboGoldType;
     }
 }

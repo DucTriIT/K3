@@ -132,6 +132,12 @@ namespace GoldRT
                 txtGoldDesc.Focus();
                 return false;
             }
+            if (cboGoldType.SelectedIndex == 0 || cboGoldType.SelectedIndex == -1)
+            {
+                ThongBao.Show("Lỗi", "Vui lòng chọn loại nhóm hàng.", "OK", ICon.Error);
+                cboGoldType.Focus();
+                return false;
+            }
             if (cboUnit.SelectedIndex == 0 || cboUnit.SelectedIndex == -1)
             {
                 ThongBao.Show("Lỗi", "Vui lòng chọn đơn vị tính.", "OK", ICon.Error);

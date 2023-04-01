@@ -73,6 +73,7 @@
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnEditGioRa = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControl4 = new DevExpress.XtraLayout.LayoutControl();
             this.btnThemNgoai = new DevExpress.XtraEditors.SimpleButton();
             this.speGia = new DevExpress.XtraEditors.SpinEdit();
@@ -139,6 +140,7 @@
             this.layoutControlItem32 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem33 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem39 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tileControl1 = new DevExpress.XtraEditors.TileControl();
             this.panel1.SuspendLayout();
@@ -219,6 +221,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -747,6 +750,7 @@
             // 
             // layoutControl2
             // 
+            this.layoutControl2.Controls.Add(this.btnEditGioRa);
             this.layoutControl2.Controls.Add(this.layoutControl4);
             this.layoutControl2.Controls.Add(this.dteStart);
             this.layoutControl2.Controls.Add(this.btnEditGioVao);
@@ -777,6 +781,21 @@
             this.layoutControl2.Size = new System.Drawing.Size(489, 567);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
+            // 
+            // btnEditGioRa
+            // 
+            this.btnEditGioRa.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnEditGioRa.Appearance.Options.UseFont = true;
+            this.btnEditGioRa.Enabled = false;
+            this.btnEditGioRa.ImageIndex = 1;
+            this.btnEditGioRa.ImageList = this.imageCollection;
+            this.btnEditGioRa.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnEditGioRa.Location = new System.Drawing.Point(453, 66);
+            this.btnEditGioRa.Name = "btnEditGioRa";
+            this.btnEditGioRa.Size = new System.Drawing.Size(32, 24);
+            this.btnEditGioRa.StyleController = this.layoutControl2;
+            this.btnEditGioRa.TabIndex = 25;
+            this.btnEditGioRa.Click += new System.EventHandler(this.btnEditGioRa_Click);
             // 
             // layoutControl4
             // 
@@ -1013,9 +1032,9 @@
             this.btnOrder.ImageIndex = 14;
             this.btnOrder.ImageList = this.imageCollection;
             this.btnOrder.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnOrder.Location = new System.Drawing.Point(237, 279);
+            this.btnOrder.Location = new System.Drawing.Point(294, 279);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(32, 25);
+            this.btnOrder.Size = new System.Drawing.Size(41, 25);
             this.btnOrder.StyleController = this.layoutControl2;
             this.btnOrder.TabIndex = 22;
             this.btnOrder.ToolTip = "Nhập số lượng món trả";
@@ -1031,7 +1050,7 @@
             this.dteEnd.ImageAlignToText = DevExpress.XtraEditors.ImageAlignToText.LeftTop;
             this.dteEnd.Location = new System.Drawing.Point(340, 66);
             this.dteEnd.Name = "dteEnd";
-            this.dteEnd.Size = new System.Drawing.Size(145, 25);
+            this.dteEnd.Size = new System.Drawing.Size(109, 25);
             this.dteEnd.StyleController = this.layoutControl2;
             this.dteEnd.TabIndex = 21;
             // 
@@ -1242,9 +1261,9 @@
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.ImageIndex = 4;
             this.btnCancel.ImageList = this.imageCollection;
-            this.btnCancel.Location = new System.Drawing.Point(273, 279);
+            this.btnCancel.Location = new System.Drawing.Point(339, 279);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(212, 25);
+            this.btnCancel.Size = new System.Drawing.Size(146, 25);
             this.btnCancel.StyleController = this.layoutControl2;
             this.btnCancel.TabIndex = 15;
             this.btnCancel.Text = "Hủy phòng";
@@ -1257,7 +1276,7 @@
             0,
             0,
             0});
-            this.speSL.Location = new System.Drawing.Point(119, 279);
+            this.speSL.Location = new System.Drawing.Point(147, 279);
             this.speSL.Name = "speSL";
             this.speSL.Properties.Appearance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.speSL.Properties.Appearance.Options.UseFont = true;
@@ -1274,7 +1293,7 @@
             0,
             0,
             0});
-            this.speSL.Size = new System.Drawing.Size(114, 24);
+            this.speSL.Size = new System.Drawing.Size(143, 24);
             this.speSL.StyleController = this.layoutControl2;
             this.speSL.TabIndex = 14;
             // 
@@ -1285,9 +1304,9 @@
             this.btnGiam.ImageIndex = 16;
             this.btnGiam.ImageList = this.imageCollection;
             this.btnGiam.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnGiam.Location = new System.Drawing.Point(63, 279);
+            this.btnGiam.Location = new System.Drawing.Point(77, 279);
             this.btnGiam.Name = "btnGiam";
-            this.btnGiam.Size = new System.Drawing.Size(52, 25);
+            this.btnGiam.Size = new System.Drawing.Size(66, 25);
             this.btnGiam.StyleController = this.layoutControl2;
             this.btnGiam.TabIndex = 13;
             this.btnGiam.Click += new System.EventHandler(this.btnGiam_Click);
@@ -1301,7 +1320,7 @@
             this.btnTang.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.btnTang.Location = new System.Drawing.Point(4, 279);
             this.btnTang.Name = "btnTang";
-            this.btnTang.Size = new System.Drawing.Size(55, 25);
+            this.btnTang.Size = new System.Drawing.Size(69, 25);
             this.btnTang.StyleController = this.layoutControl2;
             this.btnTang.TabIndex = 12;
             this.btnTang.Click += new System.EventHandler(this.btnTang_Click);
@@ -1442,7 +1461,8 @@
             this.layoutControlItem30,
             this.layoutControlItem32,
             this.layoutControlItem8,
-            this.layoutControlItem33});
+            this.layoutControlItem33,
+            this.layoutControlItem39});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
@@ -1542,10 +1562,10 @@
             // 
             this.layoutControlItem13.Control = this.btnGiam;
             this.layoutControlItem13.CustomizationFormText = "layoutControlItem13";
-            this.layoutControlItem13.Location = new System.Drawing.Point(59, 275);
+            this.layoutControlItem13.Location = new System.Drawing.Point(73, 275);
             this.layoutControlItem13.MinSize = new System.Drawing.Size(32, 28);
             this.layoutControlItem13.Name = "layoutControlItem13";
-            this.layoutControlItem13.Size = new System.Drawing.Size(56, 29);
+            this.layoutControlItem13.Size = new System.Drawing.Size(70, 29);
             this.layoutControlItem13.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem13.Text = "layoutControlItem13";
             this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
@@ -1559,7 +1579,7 @@
             this.layoutControlItem12.Location = new System.Drawing.Point(0, 275);
             this.layoutControlItem12.MinSize = new System.Drawing.Size(32, 28);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(59, 29);
+            this.layoutControlItem12.Size = new System.Drawing.Size(73, 29);
             this.layoutControlItem12.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem12.Text = "layoutControlItem12";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
@@ -1570,9 +1590,9 @@
             // 
             this.layoutControlItem14.Control = this.speSL;
             this.layoutControlItem14.CustomizationFormText = "layoutControlItem14";
-            this.layoutControlItem14.Location = new System.Drawing.Point(115, 275);
+            this.layoutControlItem14.Location = new System.Drawing.Point(143, 275);
             this.layoutControlItem14.Name = "layoutControlItem14";
-            this.layoutControlItem14.Size = new System.Drawing.Size(118, 29);
+            this.layoutControlItem14.Size = new System.Drawing.Size(147, 29);
             this.layoutControlItem14.Text = "layoutControlItem14";
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem14.TextToControlDistance = 0;
@@ -1582,10 +1602,10 @@
             // 
             this.layoutControlItem15.Control = this.btnCancel;
             this.layoutControlItem15.CustomizationFormText = "layoutControlItem15";
-            this.layoutControlItem15.Location = new System.Drawing.Point(269, 275);
+            this.layoutControlItem15.Location = new System.Drawing.Point(335, 275);
             this.layoutControlItem15.MinSize = new System.Drawing.Size(109, 29);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(216, 29);
+            this.layoutControlItem15.Size = new System.Drawing.Size(150, 29);
             this.layoutControlItem15.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem15.Text = "layoutControlItem15";
             this.layoutControlItem15.TextSize = new System.Drawing.Size(0, 0);
@@ -1661,7 +1681,7 @@
             this.layoutControlItem28.Location = new System.Drawing.Point(336, 62);
             this.layoutControlItem28.MinSize = new System.Drawing.Size(63, 22);
             this.layoutControlItem28.Name = "layoutControlItem28";
-            this.layoutControlItem28.Size = new System.Drawing.Size(149, 29);
+            this.layoutControlItem28.Size = new System.Drawing.Size(113, 29);
             this.layoutControlItem28.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem28.Text = "layoutControlItem28";
             this.layoutControlItem28.TextSize = new System.Drawing.Size(0, 0);
@@ -1672,10 +1692,10 @@
             // 
             this.layoutControlItem6.Control = this.btnOrder;
             this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
-            this.layoutControlItem6.Location = new System.Drawing.Point(233, 275);
+            this.layoutControlItem6.Location = new System.Drawing.Point(290, 275);
             this.layoutControlItem6.MinSize = new System.Drawing.Size(32, 28);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(36, 29);
+            this.layoutControlItem6.Size = new System.Drawing.Size(45, 29);
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.Text = "layoutControlItem6";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
@@ -1745,6 +1765,18 @@
             this.layoutControlItem33.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem33.TextToControlDistance = 0;
             this.layoutControlItem33.TextVisible = false;
+            // 
+            // layoutControlItem39
+            // 
+            this.layoutControlItem39.Control = this.btnEditGioRa;
+            this.layoutControlItem39.CustomizationFormText = "layoutControlItem39";
+            this.layoutControlItem39.Location = new System.Drawing.Point(449, 62);
+            this.layoutControlItem39.Name = "layoutControlItem39";
+            this.layoutControlItem39.Size = new System.Drawing.Size(36, 29);
+            this.layoutControlItem39.Text = "layoutControlItem39";
+            this.layoutControlItem39.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem39.TextToControlDistance = 0;
+            this.layoutControlItem39.TextVisible = false;
             // 
             // groupBox1
             // 
@@ -1863,6 +1895,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem33)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem39)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1980,5 +2013,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem31;
         private DevExpress.XtraEditors.SimpleButton btnTraBep;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem38;
+        private DevExpress.XtraEditors.SimpleButton btnEditGioRa;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem39;
     }
 }

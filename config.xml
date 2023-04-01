@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <DATA>
   <!--  Database info -->
-  <SERVER>192.168.1.9</SERVER>
-  <NAME>KIMHUONG2405</NAME>
+  <SERVER>ADMIN</SERVER>
+  <NAME>k3</NAME>
   <USERID>sa</USERID>
   <PASSWORD>w0O5tQ2nhLs=</PASSWORD>
   <PRINTER>Microsoft XPS Document Writer</PRINTER>

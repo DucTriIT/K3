@@ -11,22 +11,28 @@ namespace SuperX
 {
     public partial class frmChangeHours : Form
     {
-        private DateTime giovao;
+        private DateTime gioedit;
+        private bool isGiovao;
         public string dteStart;
         public frmChangeHours()
         {
             InitializeComponent();
         }
-        public frmChangeHours(DateTime giovao)
+        public frmChangeHours(DateTime gioedit, bool isGiovao = true)
         {
             InitializeComponent();
-            this.giovao = giovao;
-            timeIn.EditValue = DateTime.Parse(this.giovao.ToString("MM/dd/yyyy HH:mm"));
+            this.gioedit = gioedit;
+            this.isGiovao = isGiovao;
+            timeIn.EditValue = DateTime.Parse(this.gioedit.ToString("MM/dd/yyyy HH:mm"));
         }
 
         private void btnEditGioVao_Click(object sender, EventArgs e)
         {
-            if (timeIn.Time.CompareTo(giovao) > 0)
+            if (isGiovao && timeIn.Time.CompareTo(gioedit) > 0)
+            {
+                return;
+            }
+            else if(!isGiovao && timeIn.Time.CompareTo(gioedit) < 0)
             {
                 return;
             }

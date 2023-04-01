@@ -89,15 +89,15 @@ namespace SuperX
                 {
                     TileItem item = new TileItem();
                     item.Name = dr["IDPhong"].ToString();
-                    item.Text = dr["TenPhong"].ToString();                    
-                    item.AppearanceItem.Normal.Font = new Font(FontFamily.GenericSerif,12,FontStyle.Bold); 
+                    item.Text = dr["TenPhong"].ToString();
+                    item.AppearanceItem.Normal.Font = new Font(FontFamily.GenericSerif, 12, FontStyle.Bold);
                     item.AppearanceItem.Hovered.Font = item.AppearanceItem.Normal.Font;
                     item.AppearanceItem.Selected.Font = item.AppearanceItem.Normal.Font;
                     item.Tag = dr["MAHD"] + "";
                     item.TextAlignment = TileItemContentAlignment.TopCenter;
-                    item.AppearanceItem.Normal.BackColor= !string.IsNullOrEmpty(dr["MAHD"] + "") ?Color.Red:Color.DarkGreen;
-                    item.AppearanceItem.Hovered.BackColor= item.AppearanceItem.Normal.BackColor;
-                    item.AppearanceItem.Selected.BackColor= item.AppearanceItem.Normal.BackColor;
+                    item.AppearanceItem.Normal.BackColor = !string.IsNullOrEmpty(dr["MAHD"] + "") ? Color.Red : Color.DarkGreen;
+                    item.AppearanceItem.Hovered.BackColor = item.AppearanceItem.Normal.BackColor;
+                    item.AppearanceItem.Selected.BackColor = item.AppearanceItem.Normal.BackColor;
                     //item.Image = !string.IsNullOrEmpty(dr["MAHD"] + "") ? Resources._1454839877_Open_Sign : Resources._1454839955_closed_shop_black_friday_sale_store;
                     item.ImageAlignment = TileItemContentAlignment.MiddleCenter;
                     item.ItemClick += new TileItemClickEventHandler(item_ItemClick);
@@ -142,6 +142,7 @@ namespace SuperX
             else
                 btnStart.Enabled = true;
             btnEditGioVao.Enabled = !btnStart.Enabled;
+            btnEditGioRa.Enabled = p;
             btnEnd.Enabled = p;
             btnThem.Enabled = p;
             btnThemNgoai.Enabled = p;
@@ -595,6 +596,7 @@ namespace SuperX
             //Disable 
             btnStart.Enabled = false;
             btnEditGioVao.Enabled = true;
+            btnEditGioRa.Enabled = true;
         }
         private void SetEditStartTime(string edit)
         {
@@ -604,7 +606,13 @@ namespace SuperX
             btnStart.Enabled = false;
             btnEditGioVao.Enabled = true;
         }
-
+        private void SetEditEndTime(string edit)
+        {
+            //Set Start Time
+            dteEnd.Text = edit;
+            btnEditGioRa.Enabled = true;
+            TinhTienGio();
+        }
         private void KhoiTaoHoaDon()
         {
             //Tao BillID          
@@ -656,8 +664,24 @@ namespace SuperX
 
         private void SetEndTime()
         {
-            //Set End Time
-            dteEnd.Text = DateTime.Now.ToString("hh:mm tt");
+            try
+            {
+                //Set End Time
+                if (!string.IsNullOrEmpty(dteEnd.Text))
+                {
+                    DateTime dteOut = DateTime.Parse(dteEnd.Text);
+                    DateTime now = DateTime.Now;
+                    if (dteOut.CompareTo(now) < 0)
+                    {
+                        dteEnd.Text = DateTime.Now.ToString("hh:mm tt");
+                    }
+                }
+                else dteEnd.Text = DateTime.Now.ToString("hh:mm tt");
+            }
+            catch
+            {
+                dteEnd.Text = DateTime.Now.ToString("hh:mm tt");
+            }
             TinhTienGio();
         }
 
@@ -861,7 +885,7 @@ namespace SuperX
                     TimeSpan duration = DateTime.Parse("10:00 AM").Subtract(DateTime.Parse(dteStart.Text));
                     if (duration.TotalHours < 0)
                     {
-                       dSL = Math.Round(Convert.ToDecimal(24 + duration.TotalHours), 2);
+                        dSL = Math.Round(Convert.ToDecimal(24 + duration.TotalHours), 2);
                     }
                     else
                         dSL = Math.Round(Convert.ToDecimal(duration.TotalHours), 2);
@@ -950,7 +974,7 @@ namespace SuperX
                 dThanhTien = dSL * dGiaBan;
                 UpdateMon(grvThucDon.FocusedRowHandle, speSL.Value);
                 TinhTienHoaDon();
-                Save();                
+                Save();
                 SaveBep("2");
             }
         }
@@ -1009,7 +1033,7 @@ namespace SuperX
                 btnPrintBill_Click(null, null);
                 ds = clsCommon.ExecuteDatasetSP("ThanhToan", magd, room, clsSystem.UserID);
                 if (ds.Tables[0].Rows[0]["ErrCode"].ToString() == "0")
-                {                    
+                {
                     if (FunctionTill.fn_TillProccessTxn(magd) == "0")
                     {
                         //if (clsSystem.IsSMS)
@@ -1081,14 +1105,27 @@ namespace SuperX
         private void btnEditGioVao_Click(object sender, EventArgs e)
         {
             DateTime dteIn = DateTime.Parse(dteStart.Text);
-            frmChangeHours frm = new frmChangeHours(dteIn);
+            frmChangeHours frm = new frmChangeHours(dteIn, true);
             if (DialogResult.OK == frm.ShowDialog())
             {
                 SetEditStartTime(frm.dteStart);
                 Save();
             }
         }
-
+        private void btnEditGioRa_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(magd))
+            {
+                DateTime dteOut = DateTime.Now;
+                frmChangeHours frm = new frmChangeHours(dteOut, false);
+                if (DialogResult.OK == frm.ShowDialog())
+                {
+                    SetEditEndTime(frm.dteStart);
+                    TinhTienHoaDon();
+                    Save();
+                }
+            }
+        }
         private void btnThemNgoai_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtTenMon.Text) && cbbDVT.SelectedIndex > 0 && !string.IsNullOrEmpty(speGia.Text))
