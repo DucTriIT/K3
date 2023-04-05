@@ -209,27 +209,6 @@ namespace SuperX
 
             }
 
-            ds = clsCommon.ExecuteDatasetSP("HOADONBANGANG_GET_BYTRNID", magd);
-
-            if (ds.Tables[0].Rows.Count > 0)
-            {
-                DataRow dr = ds.Tables[0].Rows[0];
-                lblBillID.Text = dr["BillCode"].ToString();
-                speSoNguoi.Value = Convert.ToDecimal(dr["SoNguoi"]);
-                dteNgay.DateTime = DateTime.Parse(dr["TrnDate"].ToString());
-                cboUserID.SelectedIndex = Functions.GetSelectedIndexCombo(dr["EmpID"].ToString(), cboUserID, 0);
-                txtNotes.Text = dr["GhiChu"].ToString();
-                dteStart.Text = dr["GioBatDau"].ToString();
-                dteEnd.Text = dr["GioKetThuc"].ToString();
-                txtHourMoney.EditValue = dr["HourTotalAmount"];
-                txtTienCP.EditValue = dr["ChangeHourTotalAmount"];
-                txtFBMoney.EditValue = dr["SellTotalAmount"];
-                txtDiscount.EditValue = dr["Discount"];
-                txtTotal.EditValue = dr["PayAmount"];
-                btnVIP.Text = Convert.ToBoolean(dr["LoaiHD"]) ? "V" : "N";
-                grcThucDon.DataSource = ds.Tables[1];
-
-            }
         }
 
         private void groupBox2_Enter(object sender, EventArgs e)
@@ -598,19 +577,20 @@ namespace SuperX
             btnEditGioVao.Enabled = true;
             btnEditGioRa.Enabled = true;
         }
-        private void SetEditStartTime(string edit)
+        private void SetEditStartTime(DateTime edit)
         {
             //Set Start Time
-            dteStart.Text = edit;
+            dteStart.Text = edit.ToString("hh:mm tt");
             //Disable 
             btnStart.Enabled = false;
             btnEditGioVao.Enabled = true;
         }
-        private void SetEditEndTime(string edit)
+        private void SetEditEndTime(DateTime edit)
         {
             //Set Start Time
-            dteEnd.Text = edit;
+            dteEnd.Text = edit.ToString("hh:mm tt");
             btnEditGioRa.Enabled = true;
+            clsCommon.ExecuteDatasetSP("CapNhatGioRa", magd, edit.ToString("dd/MM/yyyy HH:mm"));
             TinhTienGio();
         }
         private void KhoiTaoHoaDon()
@@ -667,9 +647,11 @@ namespace SuperX
             try
             {
                 //Set End Time
-                if (!string.IsNullOrEmpty(dteEnd.Text))
+                DataSet ds = clsCommon.ExecuteDatasetSP("[HoaDonGioRa_Get]", magd);
+
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
-                    DateTime dteOut = DateTime.Parse(dteEnd.Text);
+                    DateTime dteOut = DateTime.Parse(ds.Tables[0].Rows[0]["GIORA"].ToString());
                     DateTime now = DateTime.Now;
                     if (dteOut.CompareTo(now) < 0)
                     {

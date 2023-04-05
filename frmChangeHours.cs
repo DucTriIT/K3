@@ -13,7 +13,7 @@ namespace SuperX
     {
         private DateTime gioedit;
         private bool isGiovao;
-        public string dteStart;
+        public DateTime dteStart;
         public frmChangeHours()
         {
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace SuperX
             {
                 return;
             }
-            this.dteStart = timeIn.Time.ToString("hh:mm tt");
+            this.dteStart = timeIn.Time;
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
