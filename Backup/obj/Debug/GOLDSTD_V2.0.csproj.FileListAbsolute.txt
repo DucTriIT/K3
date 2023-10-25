@@ -1,0 +1,2 @@
+D:\K3\Sources\Backup\obj\Debug\GOLDSTD_V2.0.csprojAssemblyReference.cache
+D:\K3\Sources\Backup\obj\Debug\GOLDSTD_V2.0.csproj.ResolveComReference.cache
