@@ -89,6 +89,7 @@ namespace GoldRT
             f_LoadCombo();
             f_loadDataToGrid();            
             btnIn.Dispose();
+            btnCanceled.Enabled = clsSystem.IsAdmin=="1";
         }
 
         private void f_LoadCombo()
