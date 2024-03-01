@@ -10,6 +10,8 @@ namespace GoldRT.Query.ucQueryRTTran
     {
 
         #region "Private Variables"
+        private static readonly log4net.ILog log =
+          log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         string strBillCode;
         string strCustName;
@@ -233,7 +235,10 @@ namespace GoldRT.Query.ucQueryRTTran
                 }
 
             }
-            catch { }
+            catch (Exception ex)
+            {
+                log.Error(ex.InnerException,ex);
+            }
         }
 
     }
