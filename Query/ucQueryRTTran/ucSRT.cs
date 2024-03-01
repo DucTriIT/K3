@@ -10,7 +10,8 @@ namespace GoldRT.Query.ucQueryRTTran
     {
 
         #region "Private Variables"
-
+        private static readonly log4net.ILog log =
+          log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         string strBillCode;
         string strCustName;
         string strFromDate;
@@ -229,11 +230,14 @@ namespace GoldRT.Query.ucQueryRTTran
                 if (!string.IsNullOrEmpty(id))
                 {
                     DataSet ds = clsCommon.ExecuteDatasetSP("[rptSRT_PrintBill]", id);
-                    Functions.fn_ShowReport_CloseAfterPrint(ds, "InBillThanhToan.rpt", "", "", false);
+                    Functions.fn_ShowReport_CloseAfterPrint(ds, "InBillThanhToan.rdlc", "", "",false);
                 }
 
             }
-            catch { }
+            catch(Exception ex)
+            {
+                log.Error(ex.ToString(), ex);
+            }
         }
 
     }

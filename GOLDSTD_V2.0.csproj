@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -94,26 +94,6 @@
   <ItemGroup>
     <Reference Include="Clockwork">
       <HintPath>packages\Clockwork.2.0.0\lib\Clockwork.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\CrystalDecisions.ReportSource.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\CrystalDecisions.Shared.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\CrystalDecisions.Windows.Forms.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=10.9.0.0, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04">
       <Private>True</Private>
@@ -258,8 +238,8 @@
     </Reference>
     <Reference Include="Interop.BarTender, Version=9.20.0.0, Culture=neutral" />
     <Reference Include="Interop.BtShlExtLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <HintPath>packages\log4net.2.0.8\lib\net40-full\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>packages\log4net.2.0.15\lib\net40\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Maestro.Interface, Version=9.20.1.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Maestro.Library, Version=9.20.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -267,9 +247,23 @@
       <HintPath>..\KIMNHUT\GoldRT.MH\DLL\Maestro.Library.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral" />
-    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\ReportViewer.Common.10.1.0.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1620.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
     <Reference Include="PDUConverter, Version=1.10.0.0, Culture=neutral, PublicKeyToken=515d87df384dcc81">
       <HintPath>DLL\PDUConverter.dll</HintPath>
@@ -286,6 +280,7 @@
       <HintPath>bin\Debug\Super.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Deployment" />
@@ -304,12 +299,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backup\Report\Reports\rptSRT_PrintBill.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptSRT_PrintBill.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Class\clsNumericFormat.cs" />
     <Compile Include="Class\CommSetting.cs" />
     <Compile Include="Class\CommunicationManager.cs" />
@@ -589,6 +578,7 @@
     <Compile Include="Customer\frmRTChange_Dtl.Designer.cs">
       <DependentUpon>frmRTChange_Dtl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Printer.cs" />
     <Compile Include="Product\frmChupHinh.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -912,12 +902,7 @@
     <Compile Include="Report\frmViewReport.Designer.cs">
       <DependentUpon>frmViewReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="Report\Reports\InBillThanhToan.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>InBillThanhToan.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Sys\frmBangGia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1067,10 +1052,6 @@
     <Compile Include="Messages\ThongBao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Backup\Report\Reports\rptSRT_PrintBill.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSRT_PrintBill.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Customer\Controls\ucPOStatisticLst.resx">
       <DependentUpon>ucPOStatisticLst.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1484,10 +1465,6 @@
       <DependentUpon>frmViewReport.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report\Reports\InBillThanhToan.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>InBillThanhToan.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Sys\frmBangGia.resx">
       <DependentUpon>frmBangGia.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1812,6 +1789,8 @@
     <None Include="Report\dsReport.xss">
       <DependentUpon>dsReport.xsd</DependentUpon>
     </None>
+    <EmbeddedResource Include="Report\Reports\BillThanhToanDetail.rdlc" />
+    <EmbeddedResource Include="Report\Reports\InBillThanhToan.rdlc" />
     <None Include="Resources\1454839877_Open-Sign.png" />
     <None Include="Resources\1454839955_closed_shop_black_friday_sale_store.png" />
     <Content Include="Resources\action_stop.gif" />
@@ -1821,6 +1800,19 @@
     <None Include="Resources\hamtan.png" />
     <None Include="Resources\images.jpg" />
     <None Include="Resources\images %281%29.jpg" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="super_man.ico" />
     <None Include="app.config">
       <SubType>Designer</SubType>
@@ -1850,6 +1842,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

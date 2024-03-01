@@ -29,22 +29,18 @@ namespace GoldRT
         /// </summary>
         private void InitializeComponent()
         {
-            this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
             // 
-            this.crystalReportViewer1.ActiveViewIndex = -1;
-            this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.crystalReportViewer1.DisplayGroupTree = false;
-            this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.SelectionFormula = "";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(747, 534);
-            this.crystalReportViewer1.TabIndex = 0;
-            this.crystalReportViewer1.ViewTimeSelectionFormula = "";
-            this.crystalReportViewer1.Resize += new System.EventHandler(this.crystalReportViewer1_Resize);
+            this.ReportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.ReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ReportViewer1.LocalReport.ReportEmbeddedResource = "KatzkinReports.All_Star.rdlc";
+            this.ReportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.ReportViewer1.Name = "ReportViewer1";
+            this.ReportViewer1.Size = new System.Drawing.Size(661, 657);
+            this.ReportViewer1.TabIndex = 0;
+            this.ReportViewer1.Resize += crystalReportViewer1_Resize;
             // 
             // frmViewReport
             // 
@@ -52,7 +48,7 @@ namespace GoldRT
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(747, 534);
-            this.Controls.Add(this.crystalReportViewer1);
+            this.Controls.Add(this.ReportViewer1);
             this.Name = "frmViewReport";
             this.ShowIcon = false;
             this.Text = "Xem báo cáo";
@@ -60,13 +56,10 @@ namespace GoldRT
             this.Load += new System.EventHandler(this.frmViewReport_Load);
             this.ResumeLayout(false);
 
-        }
+        }     
 
         #endregion
 
-        //private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        public CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
-
-
+        public Microsoft.Reporting.WinForms.ReportViewer ReportViewer1;
     }
 }

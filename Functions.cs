@@ -25,14 +25,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
-
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
-
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
-using SuperX.Report;
+using Microsoft.Reporting.WinForms;
+using SuperX;
 
 namespace GoldRT
 {
@@ -484,6 +481,14 @@ namespace GoldRT
             return strResult;
         }
 
+        public static void fn_ShowReport(DataSet dsReport, string pReportName, string sParams, string sValues)
+        {
+            frmViewReport frm = new frmViewReport(100);
+            frm.WindowState = FormWindowState.Maximized;
+            frm.SetReport(pReportName, dsReport, sParams, sValues);
+            frm.Show();
+        }
+
         ////View file from FTPSerevr
         //public static void ViewFileFTP(string pUploadName, string pPathName)
         //{
@@ -500,141 +505,122 @@ namespace GoldRT
         //        throw new Exception("Chưa cài đặt phần mềm để xem file này!");
         //    }
         //}
-        public static void fn_ShowReport(DataSet dsReport, string pReportName, string sParams, string sValues)
-        {
-            ReportDocument Report = new ReportDocument();
-            ParameterFields pfs = new ParameterFields();
+        //public static void fn_ShowReport(DataSet dsReport, string pReportName, string sParams, string sValues)
+        //{
+        //    ReportDocument Report = new ReportDocument();
+        //    ParameterFields pfs = new ParameterFields();
 
-            string strReportPath;
-            strReportPath = Application.StartupPath + "\\Reports\\" + pReportName;
-            Report.Load(strReportPath);
+        //    string strReportPath;
+        //    strReportPath = Application.StartupPath + "\\Reports\\" + pReportName;
+        //    Report.Load(strReportPath);
 
-            pfs = Report.ParameterFields;
+        //    pfs = Report.ParameterFields;
 
-            //Load parameter            
-            for (int i = 0; i < pfs.Count; i++)
-            {
-                switch (pfs[i].Name.ToUpper())
-                {
-                    case "NGUOILAP":
-                        pfs[i].CurrentValues.AddValue(clsSystem.FullName);
-                        break;
-                    case "NGAYLAP":
-                        pfs[i].CurrentValues.AddValue(DateTime.Now.ToString("dd/MM/yyyy"));
-                        break;
-                    case "SHOPNAME":
-                        pfs[i].CurrentValues.AddValue(clsSystem.ShopName);
-                        break;
-                    case "SHOPADDRESS":
-                        pfs[i].CurrentValues.AddValue(clsSystem.ShopAddress);
-                        break;
-                    case "SHOPTEL":
-                        pfs[i].CurrentValues.AddValue(clsSystem.ShopTel);
-                        break;
-                    case "UNIT":
-                        pfs[i].CurrentValues.AddValue(clsSystem.UnitWeight);
-                        break;
-                    default:
-                        break;
-                }
-            }
+        //    //Load parameter            
+        //    for (int i = 0; i < pfs.Count; i++)
+        //    {
+        //        switch (pfs[i].Name.ToUpper())
+        //        {
+        //            case "NGUOILAP":
+        //                pfs[i].CurrentValues.AddValue(clsSystem.FullName);
+        //                break;
+        //            case "NGAYLAP":
+        //                pfs[i].CurrentValues.AddValue(DateTime.Now.ToString("dd/MM/yyyy"));
+        //                break;
+        //            case "SHOPNAME":
+        //                pfs[i].CurrentValues.AddValue(clsSystem.ShopName);
+        //                break;
+        //            case "SHOPADDRESS":
+        //                pfs[i].CurrentValues.AddValue(clsSystem.ShopAddress);
+        //                break;
+        //            case "SHOPTEL":
+        //                pfs[i].CurrentValues.AddValue(clsSystem.ShopTel);
+        //                break;
+        //            case "UNIT":
+        //                pfs[i].CurrentValues.AddValue(clsSystem.UnitWeight);
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //    }
 
-            if (sParams != "")
-            {
-                //Cac param khac        
-                string[] aParams = sParams.Split('@');
-                string[] aValues = sValues.Split('@');
-                for (int j = 0; j < aParams.Length; j++)
-                {
-                    pfs[aParams[j]].CurrentValues.AddValue(aValues[j].ToString());
+        //    if (sParams != "")
+        //    {
+        //        //Cac param khac        
+        //        string[] aParams = sParams.Split('@');
+        //        string[] aValues = sValues.Split('@');
+        //        for (int j = 0; j < aParams.Length; j++)
+        //        {
+        //            pfs[aParams[j]].CurrentValues.AddValue(aValues[j].ToString());
 
-                }
-            }
-
-
-            //end Load parameter
-
-            Report.SetDataSource(dsReport.Tables[0]);
-
-            for (int i = 0; i < Report.Subreports.Count; i++)
-            {
-                Report.Subreports[i].SetDataSource(dsReport.Tables[i + 1]);
-
-            }
+        //        }
+        //    }
 
 
-            frmViewReport frm = new frmViewReport(100);
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Report = Report;
-            frm.pfs = pfs;
-            frm.Show();
-        }
+        //    //end Load parameter
+
+        //    Report.SetDataSource(dsReport.Tables[0]);
+
+        //    for (int i = 0; i < Report.Subreports.Count; i++)
+        //    {
+        //        Report.Subreports[i].SetDataSource(dsReport.Tables[i + 1]);
+
+        //    }
+
+
+        //    frmViewReport frm = new frmViewReport(100);
+        //    frm.WindowState = FormWindowState.Maximized;
+        //    frm.Report = Report;
+        //    frm.pfs = pfs;
+        //    frm.Show();
+        //}
         public static void fn_ShowReport_CloseAfterPrint(DataSet dsReport, string pReportName, string sParams, string sValues,bool isBill)
         {
-            ReportDocument Report = new ReportDocument();
-            ParameterFields pfs = new ParameterFields();
+            frmViewReport frm = new frmViewReport(100);
+            frm.SetReport(pReportName, dsReport, sParams, sValues);
+            frm.WindowState = FormWindowState.Maximized;
+            frm.Show();
+            var printer = new Printer();
+            string PrinterName = clsSystem.Printer;
+            if (isBill) PrinterName = clsSystem.PrinterBill;
+            printer.Run(frm.ReportViewer1.LocalReport, PrinterName, Output.PrinterName,"");
+            frm.Close();
+        }
+        private static LocalReport LocalReport(string pReportName, DataSet dsReport, string sParams="",string sValues = "")
+        {
+            LocalReport Report = new LocalReport();
+            var pfs = new List<ReportParameter>();
 
             string strReportPath;
             strReportPath = Application.StartupPath + "\\Reports\\" + pReportName;
-            Report.Load(strReportPath);
+            Report.ReportEmbeddedResource = strReportPath;
 
-            pfs = Report.ParameterFields;
+            //Load parameter
+            pfs.Add(new ReportParameter("NGUOILAP", clsSystem.FullName));
+            pfs.Add(new ReportParameter("NGAYLAP", DateTime.Now.ToString("dd/MM/yyyy")));
+            pfs.Add(new ReportParameter("SHOPNAME", clsSystem.ShopName));
+            pfs.Add(new ReportParameter("SHOPADDRESS", clsSystem.ShopAddress));
+            pfs.Add(new ReportParameter("SHOPTEL", clsSystem.ShopTel));
+            pfs.Add(new ReportParameter("UNIT", clsSystem.UnitWeight));
 
-            //Load parameter            
-            for (int i = 0; i < pfs.Count; i++)
-            {
-                switch (pfs[i].Name.ToUpper())
-                {
-                    case "NGUOILAP":
-                        pfs[i].CurrentValues.AddValue(clsSystem.FullName);
-                        break;
-                    case "NGAYLAP":
-                        pfs[i].CurrentValues.AddValue(DateTime.Now.ToString("dd/MM/yyyy"));
-                        break;
-                    case "SHOPNAME":
-                        pfs[i].CurrentValues.AddValue(clsSystem.ShopName);
-                        break;
-                    case "SHOPADDRESS":
-                        pfs[i].CurrentValues.AddValue(clsSystem.ShopAddress);
-                        break;
-                    case "SHOPTEL":
-                        pfs[i].CurrentValues.AddValue(clsSystem.ShopTel);
-                        break;
-                    case "UNIT":
-                        pfs[i].CurrentValues.AddValue(clsSystem.UnitWeight);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            if (sParams != "")
+            if (sParams != "" && sValues != "")
             {
                 //Cac param khac        
                 string[] aParams = sParams.Split('@');
                 string[] aValues = sValues.Split('@');
                 for (int j = 0; j < aParams.Length; j++)
                 {
-                    pfs[aParams[j]].CurrentValues.AddValue(aValues[j].ToString());
+                    pfs.Add(new ReportParameter(aParams[j], aValues[j].ToString()));
                 }
             }
-
-
-            //end Load parameter
-
-            Report.SetDataSource(dsReport.Tables[0]);
-
-            for (int i = 0; i < Report.Subreports.Count; i++)
+            if (pfs != null)
             {
-                Report.Subreports[i].SetDataSource(dsReport.Tables[i + 1]);
+                Report.SetParameters(pfs);
             }
 
-            frmViewReport frm = new frmViewReport(100);
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Report = Report;
-            frm.pfs = pfs;
-            frm.Show();
-            PrintDirect(Report, isBill);
-            frm.Close();
+            //end Load parameter
+            Report.DataSources.Add(new ReportDataSource("", dsReport.Tables[0]));
+            return Report;
         }
         public static void fn_ShowReport_CloseAfterPrint_Two(DataSet dsReport, string pReportName, string sParams, string sValues, bool isBill)
         {
@@ -702,112 +688,6 @@ namespace GoldRT
             //frm.Show();
             //PrintDirect_Two(Report, isBill);
             //frm.Close();
-        }
-        static void PrintDirect(ReportDocument _crp, bool isBill)
-        {
-            PrintDialog print = new PrintDialog();
-            string PrinterName = clsSystem.Printer;
-            if (isBill) PrinterName = clsSystem.PrinterBill;
-            try
-            {
-
-                _crp.PrintOptions.PrinterName = PrinterName;
-                _crp.PrintToPrinter(1, false, 0, 1);
-
-               // this.Close();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Lỗi in, vui lòng cấu hình lại máy in và thử lại!", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-        static void PrintDirect_Two(ReportDocument _crp, bool isBill)
-        {
-            PrintDialog print = new PrintDialog();
-            string PrinterName = clsSystem.Printer;
-            if (isBill) PrinterName = clsSystem.PrinterBill;
-            try
-            {
-
-                _crp.PrintOptions.PrinterName = PrinterName;
-                _crp.PrintToPrinter(2, false, 0, 1);
-
-                //this.Close();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Lỗi in, vui lòng cấu hình lại máy in và thử lại!", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-        public static void fn_ShowReport(DataSet dsReport, string pReportName, string sParams, string sValues, int iZoomSize)
-        {
-            ReportDocument Report = new ReportDocument();
-            ParameterFields pfs = new ParameterFields();
-            //
-
-            //
-            string strReportPath;
-            strReportPath = Application.StartupPath + "\\Reports\\" + pReportName;
-            Report.Load(strReportPath);
-
-            pfs = Report.ParameterFields;
-
-            //Load parameter            
-            for (int i = 0; i < pfs.Count; i++)
-            {
-                switch (pfs[i].Name.ToUpper())
-                {
-                    case "NGUOILAP":
-                        pfs[i].CurrentValues.AddValue(clsSystem.FullName);
-                        break;
-                    case "NGAYLAP":
-                        pfs[i].CurrentValues.AddValue(DateTime.Now.ToString("dd/MM/yyyy"));
-                        break;
-                    case "SHOPNAME":
-                        pfs[i].CurrentValues.AddValue(clsSystem.ShopName);
-                        break;
-                    case "SHOPADDRESS":
-                        pfs[i].CurrentValues.AddValue(clsSystem.ShopAddress);
-                        break;
-                    case "SHOPTEL":
-                        pfs[i].CurrentValues.AddValue(clsSystem.ShopTel);
-                        break;
-                    case "UNIT":
-                        pfs[i].CurrentValues.AddValue(clsSystem.UnitWeight);
-                        break;
-                    default:
-                        break;
-                }
-            }
-            if (sParams != "")
-            {
-                //Cac param khac        
-                string[] aParams = sParams.Split('@');
-                string[] aValues = sValues.Split('@');
-                for (int j = 0; j < aParams.Length; j++)
-                {
-                    pfs[aParams[j]].CurrentValues.AddValue(aValues[j].ToString());
-
-                }
-            }
-
-
-            //end Load parameter
-
-            Report.SetDataSource(dsReport.Tables[0]);
-
-            for (int i = 0; i < Report.Subreports.Count; i++)
-            {
-                Report.Subreports[i].SetDataSource(dsReport.Tables[i + 1]);
-            }
-
-            frmViewReport frm = new frmViewReport(iZoomSize);
-            frm.WindowState = FormWindowState.Maximized;
-            frm.Report = Report;
-            frm.pfs = pfs;
-
-            //frm.ShowDialog();            
-            frm.Show();
         }
 
         public static void fn_ShowReport_AndImage(DataSet dsReport, string pReportName, string sParams, string sValues)

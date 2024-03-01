@@ -1,5 +1,4 @@
-﻿using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
+﻿using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +17,8 @@ namespace GoldRT
             InitializeComponent();
         }
 
-        public ReportDocument Report = new ReportDocument();
-        public ParameterFields pfs = new ParameterFields();
         private int ZoomSize = 100;
+        private DataSet DsReport;
 
         public frmViewReport(int _ZoomSize)
         {
@@ -29,16 +27,59 @@ namespace GoldRT
         }
 
         private void frmViewReport_Load(object sender, EventArgs e)
-        {            
-            crystalReportViewer1.ReportSource = Report;
-            crystalReportViewer1.ParameterFieldInfo = pfs;
-            crystalReportViewer1.Zoom(ZoomSize);
-            crystalReportViewer1.Refresh();
+        {
+            ReportViewer1.LocalReport.SubreportProcessing += LocalReport_SubreportProcessing;
+        }
+
+        private void LocalReport_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
+        {
+            if (e.ReportPath == "BillThanhToanDetail")
+            {
+                ReportDataSource ds = new ReportDataSource("DataSet1", DsReport.Tables[1]);
+                e.DataSources.Add(ds);
+            }
         }
 
         private void crystalReportViewer1_Resize(object sender, EventArgs e)
         {
-            crystalReportViewer1.Refresh();
+            ReportViewer1.Refresh();
+        }
+        public void SetReport(string pReportName, DataSet dsReport, string sParams = "", string sValues = "")
+        {
+            ReportViewer1.ProcessingMode = ProcessingMode.Local;
+            ReportViewer1.PageCountMode = PageCountMode.Actual;
+            var pfs = new List<ReportParameter>();
+
+            string strReportPath;
+            strReportPath = "SuperX.Report.Reports." + pReportName;
+            ReportViewer1.LocalReport.ReportEmbeddedResource = strReportPath;
+
+            //Load parameter
+            pfs.Add(new ReportParameter("NGUOILAP", clsSystem.FullName));
+            pfs.Add(new ReportParameter("NGAYLAP", DateTime.Now.ToString("dd/MM/yyyy")));
+            pfs.Add(new ReportParameter("SHOPNAME", clsSystem.ShopName));
+            pfs.Add(new ReportParameter("SHOPADDRESS", clsSystem.ShopAddress));
+            pfs.Add(new ReportParameter("SHOPTEL", clsSystem.ShopTel));
+            pfs.Add(new ReportParameter("UNIT", clsSystem.UnitWeight));
+
+            if (sParams != "" && sValues != "")
+            {
+                //Cac param khac        
+                string[] aParams = sParams.Split('@');
+                string[] aValues = sValues.Split('@');
+                for (int j = 0; j < aParams.Length; j++)
+                {
+                    pfs.Add(new ReportParameter(aParams[j], aValues[j].ToString()));
+                }
+            }
+            if (pfs != null)
+            {
+                ReportViewer1.LocalReport.SetParameters(pfs);
+            }
+            DsReport = dsReport;
+            //end Load parameter
+            ReportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", DsReport.Tables[0]));
+            ReportViewer1.RefreshReport();
         }
 
     }
