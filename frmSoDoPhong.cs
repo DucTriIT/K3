@@ -618,7 +618,7 @@ namespace SuperX
                 if (!string.IsNullOrEmpty(magd))
                 {
                     DataSet ds = clsCommon.ExecuteDatasetSP("[rptSRT_PrintBill]", magd);
-                    Functions.fn_ShowReport_CloseAfterPrint(ds, "InBillThanhToan.rpt", "", "", false);
+                    Functions.fn_ShowReport_CloseAfterPrint(ds, "InBillThanhToan.rdlc", "", "", false);
                 }
             }
             catch (Exception ex) { }
