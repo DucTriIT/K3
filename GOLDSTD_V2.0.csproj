@@ -23,7 +23,7 @@
     </StartupObject>
     <Win32Resource>
     </Win32Resource>
-    <ApplicationIcon>super_man.ico</ApplicationIcon>
+    <ApplicationIcon>restaurant.ico</ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -304,12 +304,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Backup\Report\Reports\rptSRT_PrintBill.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>rptSRT_PrintBill.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Class\clsNumericFormat.cs" />
     <Compile Include="Class\CommSetting.cs" />
     <Compile Include="Class\CommunicationManager.cs" />
@@ -1067,10 +1061,6 @@
     <Compile Include="Messages\ThongBao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Backup\Report\Reports\rptSRT_PrintBill.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>rptSRT_PrintBill.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Customer\Controls\ucPOStatisticLst.resx">
       <DependentUpon>ucPOStatisticLst.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -1821,6 +1811,7 @@
     <None Include="Resources\hamtan.png" />
     <None Include="Resources\images.jpg" />
     <None Include="Resources\images %281%29.jpg" />
+    <Content Include="restaurant.ico" />
     <Content Include="super_man.ico" />
     <None Include="app.config">
       <SubType>Designer</SubType>
@@ -1849,6 +1840,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Backup\Report\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
