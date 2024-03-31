@@ -43,16 +43,18 @@ namespace SuperX
         public void Export(LocalReport Report, int OutputType, string OutPutFile)
         {
             string DeviceInfo = "";
-            if(Report.ReportEmbeddedResource == "SuperX.Report.Reports.InBillThanhToan.rdlc")
+            if(Report.ReportEmbeddedResource == "SuperX.Report.Reports.InBillThanhToan.rdlc" ||
+                Report.ReportEmbeddedResource == "SuperX.Report.Reports.InBillBep.rdlc"||
+                Report.ReportEmbeddedResource == "SuperX.Report.Reports.InBillTraBep.rdlc")
             {
                 DeviceInfo = "<DeviceInfo>";
                 DeviceInfo += "     <OutputFormat>EMF</OutputFormat>";
-                DeviceInfo += "     <PageWidth>3.14in</PageWidth>";
-                DeviceInfo += "     <PageHeight>4.26in</PageHeight>";
-                DeviceInfo += "     <MarginTop>0.1in</MarginTop>";
+                DeviceInfo += "     <PageWidth>3.15in</PageWidth>";
+                DeviceInfo += "     <PageHeight>8.26in</PageHeight>";
+                DeviceInfo += "     <MarginTop>0.0in</MarginTop>";
                 DeviceInfo += "     <MarginLeft>0.0in</MarginLeft>";
                 DeviceInfo += "     <MarginRight>0.0in</MarginRight>";
-                DeviceInfo += "     <MarginBottom>0.1in</MarginBottom>";
+                DeviceInfo += "     <MarginBottom>0.0in</MarginBottom>";
                 DeviceInfo += "</DeviceInfo>";
             }
             else if(OutputType == 1 || OutputType == 2){

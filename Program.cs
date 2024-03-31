@@ -21,7 +21,7 @@ namespace GoldRT
         private static string SvrInfoFilePathSMS = "";
         public static CultureInfo ciVN = new System.Globalization.CultureInfo("vi-VN");
         public static CultureInfo ciUS = new System.Globalization.CultureInfo("en-US");
-        static System.Threading.Mutex singleton = new Mutex(true, "SuperX");
+        static System.Threading.Mutex singleton = new Mutex(true, "SuperX1");
         [STAThread]
         static void Main()
         {

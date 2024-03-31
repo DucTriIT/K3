@@ -88,18 +88,17 @@
     <ReportSection>
       <Body>
         <ReportItems>
-          <Subreport Name="Subreport1">
-            <ReportName>BillThanhToanDetail</ReportName>
+          <Subreport Name="Subreport3">
+            <ReportName>BillBepDetail</ReportName>
             <Parameters>
               <Parameter Name="TrnId">
                 <Value>=First(Fields!TrnID.Value, "DataSet1")</Value>
               </Parameter>
             </Parameters>
-            <KeepTogether>true</KeepTogether>
-            <Top>0cm</Top>
-            <Left>0.26784cm</Left>
-            <Height>0.37688cm</Height>
-            <Width>7.45816cm</Width>
+            <Top>0.03528cm</Top>
+            <Left>0.226cm</Left>
+            <Height>0.41216cm</Height>
+            <Width>7.5cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -107,78 +106,15 @@
             </Style>
           </Subreport>
         </ReportItems>
-        <Height>0.47568cm</Height>
+        <Height>0.46507cm</Height>
         <Style />
       </Body>
       <Width>8cm</Width>
       <Page>
         <PageHeader>
-          <Height>4.63021cm</Height>
+          <Height>5.45042cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <ReportItems>
-            <Textbox Name="Textbox4">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>="Giờ Ra:" &amp; First(Fields!GioKetThuc.Value, "DataSet1")</Value>
-                      <Style>
-                        <FontFamily>Tahoma</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>3.38433cm</Top>
-              <Left>4.30629cm</Left>
-              <Height>0.54708cm</Height>
-              <Width>3.42279cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox5">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>="Giờ vào:" &amp; First(Fields!GioBatDau.Value, "DataSet1")</Value>
-                      <Style>
-                        <FontFamily>tahoma</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>3.38433cm</Top>
-              <Left>0.27092cm</Left>
-              <Height>0.54708cm</Height>
-              <Width>3.32493cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Textbox Name="TenTiem">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -204,7 +140,6 @@
               <Left>0.26938cm</Left>
               <Height>0.81166cm</Height>
               <Width>7.45816cm</Width>
-              <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -239,7 +174,7 @@
               <Left>0.26938cm</Left>
               <Height>0.6cm</Height>
               <Width>7.45816cm</Width>
-              <ZIndex>3</ZIndex>
+              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -269,11 +204,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox2</rd:DefaultName>
-              <Top>1.41166cm</Top>
+              <Top>2.04666cm</Top>
               <Left>0.27092cm</Left>
               <Height>0.49926cm</Height>
               <Width>7.45662cm</Width>
-              <ZIndex>4</ZIndex>
+              <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -291,7 +226,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>HÓA ĐƠN THANH TOÁN</Value>
+                      <Value>PHIẾU ĐẶT MÓN</Value>
                       <Style>
                         <FontSize>14pt</FontSize>
                       </Style>
@@ -303,11 +238,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox12</rd:DefaultName>
-              <Top>1.91092cm</Top>
+              <Top>2.54592cm</Top>
               <Left>0.26938cm</Left>
               <Height>0.67938cm</Height>
               <Width>7.45816cm</Width>
-              <ZIndex>5</ZIndex>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -325,7 +260,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Ngày hát:" &amp; First(Fields!TrnDate.Value, "DataSet1")</Value>
+                      <Value>="Ngày:" &amp; Parameters!GIOLAP.Value &amp; "-" &amp; Parameters!NGAYLAP.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -333,11 +268,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox4</rd:DefaultName>
-              <Top>2.76669cm</Top>
+              <Top>3.40169cm</Top>
               <Left>0.26938cm</Left>
               <Height>0.54708cm</Height>
               <Width>7.45816cm</Width>
-              <ZIndex>6</ZIndex>
+              <ZIndex>4</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -363,10 +298,75 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>TenPhong</rd:DefaultName>
-              <Top>4.00196cm</Top>
+              <Top>4.63696cm</Top>
               <Left>0.26938cm</Left>
               <Height>0.54708cm</Height>
               <Width>7.45816cm</Width>
+              <ZIndex>5</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="SHOPADDRESS2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="ĐT:" &amp; Parameters!SHOPTEL.Value</Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>SHOPADDRESS</rd:DefaultName>
+              <Top>1.44666cm</Top>
+              <Left>0.26784cm</Left>
+              <Height>0.6cm</Height>
+              <Width>7.45816cm</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox4">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Thu Ngân:" &amp; First(Fields!EmpName.Value, "DataSet1")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox4</rd:DefaultName>
+              <Top>3.98405cm</Top>
+              <Left>0.27092cm</Left>
+              <Height>0.6cm</Height>
+              <Width>7.45508cm</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>
@@ -386,7 +386,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>3.86238cm</Height>
+          <Height>1.74571cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -424,235 +424,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox11</rd:DefaultName>
-              <Top>2.17135cm</Top>
+              <Top>0.07056cm</Top>
               <Left>0cm</Left>
               <Height>1.59578cm</Height>
-              <Width>8cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Line Name="Line1">
-              <Top>0.03528cm</Top>
-              <Left>0.26938cm</Left>
-              <Height>0cm</Height>
-              <Width>7.45816cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>Solid</Style>
-                </Border>
-              </Style>
-            </Line>
-            <Textbox Name="Textbox3">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Tiền món</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.10583cm</Top>
-              <Left>3.8378cm</Left>
-              <Height>0.53385cm</Height>
-              <Width>1.77289cm</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox6">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Sum(Fields!SellTotalAmount.Value, "DataSet1") / 1000</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <Format>#,0</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.10583cm</Top>
-              <Left>5.61069cm</Left>
-              <Height>0.5385cm</Height>
-              <Width>2.11685cm</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox7">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Sum(Fields!Discount.Value, "DataSet1") / 1000</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <Format>#,0</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.63968cm</Top>
-              <Left>5.61069cm</Left>
-              <Height>0.53385cm</Height>
-              <Width>2.11685cm</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox8">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Giảm giá</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.63968cm</Top>
-              <Left>3.8378cm</Left>
-              <Height>0.53385cm</Height>
-              <Width>1.77289cm</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Line Name="Line2">
-              <Top>1.27937cm</Top>
-              <Left>0.26938cm</Left>
-              <Height>0cm</Height>
-              <Width>7.45662cm</Width>
-              <ZIndex>6</ZIndex>
-              <Style>
-                <Border>
-                  <Style>Solid</Style>
-                </Border>
-              </Style>
-            </Line>
-            <Textbox Name="Textbox9">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Tổng cộng</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.34992cm</Top>
-              <Left>3.83626cm</Left>
-              <Height>0.53385cm</Height>
-              <Width>1.77289cm</Width>
-              <ZIndex>7</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox10">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Sum(Fields!PayAmount.Value, "DataSet1") / 1000</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                        <Format>#,0</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.34992cm</Top>
-              <Left>5.60915cm</Left>
-              <Height>0.5385cm</Height>
-              <Width>2.11685cm</Width>
-              <ZIndex>8</ZIndex>
+              <Width>7.72754cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -709,6 +484,11 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="GIOLAP">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -744,6 +524,11 @@
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>1</RowIndex>
           <ParameterName>UNIT</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>GIOLAP</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

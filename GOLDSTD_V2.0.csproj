@@ -1465,6 +1465,10 @@
       <DependentUpon>frmViewReport.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\Reports\BillBepDetail.rdlc" />
+    <EmbeddedResource Include="Report\Reports\BillTraBepDetail.rdlc" />
+    <EmbeddedResource Include="Report\Reports\InBillBep.rdlc" />
+    <EmbeddedResource Include="Report\Reports\InBillTraBep.rdlc" />
     <EmbeddedResource Include="Sys\frmBangGia.resx">
       <DependentUpon>frmBangGia.cs</DependentUpon>
       <SubType>Designer</SubType>

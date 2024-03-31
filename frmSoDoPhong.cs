@@ -1119,7 +1119,7 @@ namespace SuperX
                     DataSet ds = clsCommon.ExecuteDatasetSP("[rptHDB_PrintBill]", magd, "1");
                     if (ds.Tables[1].Rows.Count > 0)
                     {
-                        Functions.fn_ShowReport_CloseAfterPrint(ds, "InBillBep.rpt", "GIOLAP", DateTime.Now.ToString("HH:mm"), true);
+                        Functions.fn_ShowReport_CloseAfterPrint(ds, "InBillBep.rdlc", "GIOLAP", DateTime.Now.ToString("HH:mm"), true);
                     }
                 }
             }
@@ -1151,7 +1151,7 @@ namespace SuperX
                     DataSet ds = clsCommon.ExecuteDatasetSP("[rptHDB_PrintBill]", magd, "2");
                     if (ds.Tables[1].Rows.Count > 0)
                     {
-                        Functions.fn_ShowReport_CloseAfterPrint(ds, "InBillTraBep.rpt", "GIOLAP", DateTime.Now.ToString("HH:mm"), false);
+                        Functions.fn_ShowReport_CloseAfterPrint(ds, "InBillTraBep.rdlc", "GIOLAP", DateTime.Now.ToString("HH:mm"), false);
                     }
                 }
             }

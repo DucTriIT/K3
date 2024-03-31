@@ -33,7 +33,7 @@ namespace GoldRT
 
         private void LocalReport_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
         {
-            if (e.ReportPath == "BillThanhToanDetail")
+            if (e.ReportPath == "BillThanhToanDetail"|| e.ReportPath == "BillBepDetail"|| e.ReportPath == "BillTraBepDetail")
             {
                 ReportDataSource ds = new ReportDataSource("DataSet1", DsReport.Tables[1]);
                 e.DataSources.Add(ds);
