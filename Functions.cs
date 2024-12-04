@@ -575,7 +575,7 @@ namespace GoldRT
             ParameterFields pfs = new ParameterFields();
 
             string strReportPath;
-            strReportPath = Application.StartupPath + "\\Reports\\" + pReportName;
+            strReportPath = Application.StartupPath + "\\Report\\Reports\\" + pReportName;
             Report.Load(strReportPath);
 
             pfs = Report.ParameterFields;
